@@ -1,0 +1,25 @@
+.dialogs {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.dialogsNames {
+}
+
+.dialogsNames a{
+    color: black;
+    text-decoration: none;
+}
+.dialogsNames a.activeLink{
+    color: yellowgreen;
+}
+
+.dialog {
+}
+
+.messages {
+}
+
+.message {
+}

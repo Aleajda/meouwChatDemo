@@ -1,0 +1,9 @@
+.textarea{
+    
+}
+.textareaError{
+    border: solid red 5px;
+}
+.errorText{
+    color: red;
+}

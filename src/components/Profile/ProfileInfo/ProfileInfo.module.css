@@ -1,0 +1,14 @@
+
+.ava{
+  display: flex;
+}
+
+.avaImg{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.discription{
+  margin-left: 30px;
+}

@@ -1,0 +1,30 @@
+.item {
+    color: black;
+    font-size: large;
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.nav {
+    grid-area: n;
+    background-color: white;
+}
+
+.nav nav {
+    padding-top: 50px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.item a {
+    text-decoration: none;
+    color: black;
+}
+
+.item a.activeLink {
+    color: greenyellow;
+}
+
