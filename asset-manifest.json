@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/meouwChatDemo/static/css/main.34364cc9.css",
-    "main.js": "/meouwChatDemo/static/js/main.45add8ee.js",
+    "main.css": "/meouwChatDemo/static/css/main.b06dd3a7.css",
+    "main.js": "/meouwChatDemo/static/js/main.c7cfe8b8.js",
     "static/css/351.9a100bc1.chunk.css": "/meouwChatDemo/static/css/351.9a100bc1.chunk.css",
     "static/js/351.709ad897.chunk.js": "/meouwChatDemo/static/js/351.709ad897.chunk.js",
     "static/js/787.454921cb.chunk.js": "/meouwChatDemo/static/js/787.454921cb.chunk.js",
     "index.html": "/meouwChatDemo/index.html",
-    "main.34364cc9.css.map": "/meouwChatDemo/static/css/main.34364cc9.css.map",
-    "main.45add8ee.js.map": "/meouwChatDemo/static/js/main.45add8ee.js.map",
+    "main.b06dd3a7.css.map": "/meouwChatDemo/static/css/main.b06dd3a7.css.map",
+    "main.c7cfe8b8.js.map": "/meouwChatDemo/static/js/main.c7cfe8b8.js.map",
     "351.9a100bc1.chunk.css.map": "/meouwChatDemo/static/css/351.9a100bc1.chunk.css.map",
     "351.709ad897.chunk.js.map": "/meouwChatDemo/static/js/351.709ad897.chunk.js.map",
     "787.454921cb.chunk.js.map": "/meouwChatDemo/static/js/787.454921cb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.34364cc9.css",
-    "static/js/main.45add8ee.js"
+    "static/css/main.b06dd3a7.css",
+    "static/js/main.c7cfe8b8.js"
   ]
 }
