@@ -13,14 +13,20 @@ const Login = (props) =>{
 
     const onSubmit = (FormData) =>{
         console.log(FormData);
-        props.loginUser(FormData.login, FormData.password, FormData.rememberMe);
+        if (props.captcha){
+            props.loginUser(FormData.login, FormData.password, FormData.rememberMe, FormData.captcha);
+        }
+        else{
+            props.loginUser(FormData.login, FormData.password, FormData.rememberMe, null);
+        }
     }
     
     if (props.isAuth){return <Navigate to={"/profile"}/>}
     return(
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm {...props} onSubmit={onSubmit}/>
+            
         </div>
     );
 }
@@ -37,10 +43,16 @@ const LoginForm = (props) =>{
             <div>
                 <Field placeholder="Password" name="password" type="password" component={Input} validate={[required, maxLength100]}/>
             </div>
+            {props.captcha 
+            ?<div>
+                <Field placeholder="Captcha" name="captcha" component={Input} validate={[required, maxLength100]}/>
+            </div>
+            :null}
             <div>
                 <Field type="checkbox" name="rememberMe" component={"input"}/>
                 remember me
             </div>
+            {props.captcha ? <div><img src={props.captcha}/></div> : null}
             {props.error && 
             <div className={s.errorText}>
                 {props.error}
@@ -56,8 +68,8 @@ const LoginForm = (props) =>{
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-let mapDispatchToProps = (state) =>({
-    isAuth: state.Auth.isAuth
+let mapStateToProps = (state) =>({
+    isAuth: state.Auth.isAuth,
+    captcha: state.Auth.captcha
 })
-
-export default connect(mapDispatchToProps, {loginUser})(Login);;
+export default connect(mapStateToProps, {loginUser})(Login);;

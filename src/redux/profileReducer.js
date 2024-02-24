@@ -4,6 +4,7 @@ const add_post_text = "ADD-POST-TEXT";
 const add_post = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const SET_PHOTOS = "SET_PHOTO";
 
 let defaultState = {
     MyPostsData: [
@@ -30,6 +31,8 @@ const profileReducer = (state = defaultState, action) =>{
             return {...state, profile: action.profile};
         case SET_STATUS:
             return {...state, status: action.status};
+        case SET_PHOTOS:
+            return {...state, profile: {...state.profile, photos: action.photos}};
         default:
             return stateCopy;
     }   
@@ -45,6 +48,11 @@ export const setUserProfile = (profile) =>{
 
 export const setStatus = (status) =>{
     return {type: SET_STATUS, status}
+}
+
+const setPhoto = (photos) =>{
+    debugger
+    return {type: SET_PHOTOS, photos}
 }
 
 export const setProfile = (userId) => async (dispatch) => {
@@ -65,6 +73,14 @@ export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0){
         dispatch(setStatus(status));
+    }
+};
+
+export const updatePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.updatePhoto(file)
+    if (response.data.resultCode === 0){
+        dispatch(setPhoto(response.data.data.photos));
+        debugger
     }
 };
 
