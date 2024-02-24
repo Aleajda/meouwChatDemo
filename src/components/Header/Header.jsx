@@ -19,10 +19,10 @@ const Header = (props) => {
         ?<div>{props.login} <button onClick={props.logoutUser}>logout</button>
 
         <button onClick={toggleNav} className={s.navbtn}>nav</button>
-        {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends/></div>}
+        {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends toggleNav={toggleNav}/></div>}
 
         </div> 
-        :<div><NavLink to="/login">login</NavLink><button className={s.navbtn}>nav</button></div>}</div>
+        :<div><NavLink to="/login">login</NavLink></div>}</div>
         </header> 
     );
 }
