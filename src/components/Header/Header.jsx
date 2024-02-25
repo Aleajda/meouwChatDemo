@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
 import React, { useState } from "react";
 import NavigationWithoutFriends from "../Navigation/NavigationWithoutFriends";
+import koteyka from "../../images/koteyka.gif";
+import menuIcon from "../../images/iconmenu2.svg"
 
 const Header = (props) => {
 
@@ -13,16 +15,20 @@ const Header = (props) => {
 
     return (
         <header className={s.header}>
-        <img className={s.icon} src='https://i.pinimg.com/originals/10/35/6c/10356c8e0a85a44788d258286547b132.gif'></img>
+        <img className={s.icon} src={koteyka}></img>
         <div className={s.name}>MEOUWCHAT</div>
-        <div className={s.login}>{props.isAuth 
-        ?<div>{props.login} <button onClick={props.logoutUser}>logout</button>
-
-        <button onClick={toggleNav} className={s.navbtn}>nav</button>
-        {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends toggleNav={toggleNav}/></div>}
-
-        </div> 
-        :<div><NavLink to="/login">login</NavLink></div>}</div>
+        {props.isAuth 
+        ?
+        <div className={s.loginWrapper}>
+            <div className={s.loginContainer}>
+                <div className={s.login}>{props.login}</div>
+                <button class={s.submitBtn} onClick={props.logoutUser}><span>logout</span></button>
+            </div>
+            <img src={menuIcon} onClick={toggleNav} className={s.navImg}></img>
+            {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends toggleNav={toggleNav}/></div>}
+        </div>
+        :
+        <div className={s.loginLink}><NavLink to="/login">login</NavLink></div>}
         </header> 
     );
 }

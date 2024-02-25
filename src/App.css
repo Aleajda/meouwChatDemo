@@ -21,6 +21,7 @@
         grid-area: c;
         background-color: white;
         padding: 20px;
+        padding-right: 0px;
     }
     
     .navigate{

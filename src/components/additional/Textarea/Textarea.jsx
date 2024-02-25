@@ -4,10 +4,10 @@ import React from "react";
 export const Textarea = ({input, meta, ...props}) =>{
     const hasError = meta.touched && meta.error;
     return (
-        <div>
+        <div className={s.textareaWrapper}>
             <textarea className={s.textarea + " " + (hasError ? s.textareaError : "") } {...input} {...props}/>
-            <div>
-                {hasError && <span className={s.errorText}>{meta.error}</span>}
+            <div className={s.errorWrapper}>
+                {hasError && <span className={s.errorText}>{meta.error}!</span>}
             </div>
         </div>
     )
@@ -17,7 +17,7 @@ export const Input = ({input, meta, ...props}) =>{
     const hasError = meta.touched && meta.error;
     return (
         <div>
-            <input className={s.textarea + " " + (hasError ? s.textareaError : "") } {...input} {...props}/>
+            <input className={s.input + " " + (hasError ? s.textareaError : "") } {...input} {...props}/>
             <div>
                 {hasError && <span className={s.errorText}>{meta.error}</span>}
             </div>

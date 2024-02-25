@@ -5,23 +5,28 @@ import { Field, reduxForm } from "redux-form";
 import { maxLengthCreator, required } from "../../../utils/validators";
 import { Textarea } from "../../additional/Textarea/Textarea";
 
-const maxLength15 = maxLengthCreator(15);
+const maxLength150 = maxLengthCreator(150);
 
 const Posts = (props) => {
     
     let addPost = (data) =>{
         props.addPost(data.NewPostText);
+        data.NewPostText = "";
     }
 
     let posts = props.MyPostsData.map(p => (<Post likes={p.likes} message= {p.message}/>))
 
     return (
-        <div>
-            <div>my posts</div>
-            <div>new posts</div>
-            <AddPostFormRedux onSubmit={addPost}/>
+        <div className={s.postsWrapper}>
+            <div className={s.myPosts}>Мои посты</div>
             <div>
                {posts}
+            </div>
+            <div className={s.addPost}>
+                <div className={s.addPostText}>
+                    Добавить пост
+                </div>
+                <AddPostFormRedux onSubmit={addPost}/>
             </div>
         </div>
     );
@@ -33,11 +38,11 @@ const AddPostForm = (props) =>{
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Textarea} name="NewPostText" placeholder="Enter your text"
-                validate={[required, maxLength15]}/>
+                <Field component={Textarea} name="NewPostText" placeholder="Введите текст.."
+                validate={[required, maxLength150]}/>
             </div>
             <div>
-                <button>upload</button>
+                <button class={s.submitBtn}><span>Опубликовать</span></button>
             </div>
         </form>
     );

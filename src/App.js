@@ -1,7 +1,8 @@
+
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
 import MessagesContainer from "./components/Messages/MessagesContainer";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 // import UsersContainer from "./components/Users/UsersContainer";
 
 import ProfileContainer from "./components/Profile/ProfileContainer";

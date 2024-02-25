@@ -2,9 +2,9 @@ import Profile from "./Profile";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { setProfile, getStatus, updateStatus, updatePhoto } from "../../redux/profileReducer";
-import { withRouter } from "../../withRouter";
 import { withAuthRedirect } from "../hoc/withAuthRedirect";
 import { compose } from "redux";
+import { withRouter } from "../hoc/withRouter";
 
 const ProfileContainer = (props) =>{
     useEffect(() =>{
