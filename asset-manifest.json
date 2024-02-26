@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/meouwChatDemo/static/css/main.2008b867.css",
+    "main.css": "/meouwChatDemo/static/css/main.578c368f.css",
     "main.js": "/meouwChatDemo/static/js/main.5c9a15f8.js",
     "static/css/351.9a100bc1.chunk.css": "/meouwChatDemo/static/css/351.9a100bc1.chunk.css",
     "static/js/351.709ad897.chunk.js": "/meouwChatDemo/static/js/351.709ad897.chunk.js",
@@ -9,14 +9,14 @@
     "static/media/vk3.svg": "/meouwChatDemo/static/media/vk3.4d7dd60e56dd66aa7404e75eb57f29a7.svg",
     "index.html": "/meouwChatDemo/index.html",
     "static/media/iconmenu2.svg": "/meouwChatDemo/static/media/iconmenu2.525a7dc9e3f97bb71b3addc4c8714a17.svg",
-    "main.2008b867.css.map": "/meouwChatDemo/static/css/main.2008b867.css.map",
+    "main.578c368f.css.map": "/meouwChatDemo/static/css/main.578c368f.css.map",
     "main.5c9a15f8.js.map": "/meouwChatDemo/static/js/main.5c9a15f8.js.map",
     "351.9a100bc1.chunk.css.map": "/meouwChatDemo/static/css/351.9a100bc1.chunk.css.map",
     "351.709ad897.chunk.js.map": "/meouwChatDemo/static/js/351.709ad897.chunk.js.map",
     "787.454921cb.chunk.js.map": "/meouwChatDemo/static/js/787.454921cb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2008b867.css",
+    "static/css/main.578c368f.css",
     "static/js/main.5c9a15f8.js"
   ]
 }
