@@ -22,7 +22,7 @@ const Header = (props) => {
         <div className={s.loginWrapper}>
             <div className={s.loginContainer}>
                 <div className={s.login}>{props.login}</div>
-                <button class={s.submitBtn} onClick={props.logoutUser}><span>logout</span></button>
+                <button className={s.submitBtn} onClick={props.logoutUser}><span>logout</span></button>
             </div>
             <img src={menuIcon} onClick={toggleNav} className={s.navImg}></img>
             {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends toggleNav={toggleNav}/></div>}

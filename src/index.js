@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
+import ErrorBoundary from './ErrorBoundary';
 
 
 
@@ -16,7 +17,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>
     <Provider store={store}>
-      <App/>
+      <ErrorBoundary>
+        <App/>
+      </ErrorBoundary>
     </Provider>
   </HashRouter>
 );

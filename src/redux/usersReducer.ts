@@ -9,16 +9,37 @@ const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_USERS_ARE_LOADING = "USERS_ARE_LOADING";
 const SET_FOLLOWING_IN_PROGRESS = "SET_FOLLOWING_IN_PROGRESS";
 
-let defaultState = {
+let screenWidth = window.innerWidth;
+
+let usersCount = 12;
+
+if (screenWidth > 715){
+    usersCount = 16;
+}
+else if (screenWidth > 899){
+    usersCount = 20;
+}
+
+export type DefaultStateType = {
+    users: any[],
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number,
+    isLoading: boolean,
+    isFollowing: any[]
+
+}
+
+let defaultState:DefaultStateType = {
     users: [],
-    pageSize: 7,
+    pageSize: usersCount,
     totalUsersCount: 0,
     currentPage: 1,
     isLoading: false,
     isFollowing: []
 }
 
-const usersReducer = (state = defaultState, action) =>{
+const usersReducer = (state = defaultState, action: any):DefaultStateType =>{
     switch(action.type){
         case FOLLOW:
             return followUnfollowUser(state, action, true);
@@ -45,7 +66,7 @@ const usersReducer = (state = defaultState, action) =>{
     }
 }   
 
-const followUnfollowUser = (state, action, followed) => {
+const followUnfollowUser = (state: DefaultStateType, action: any, followed: boolean) => {
     return {
         ...state,
         users: state.users.map(u => {
@@ -57,40 +78,79 @@ const followUnfollowUser = (state, action, followed) => {
     }
 };
 
+type FollowACActionType = {
+    type: typeof FOLLOW,
+    userId: number
+}
 
-export const FollowAC = (userId) =>{
+type UnfollowACActionType = {
+    type: typeof UNFOLLOW,
+    userId: number
+}
+
+type setUsersActionType = {
+    type: typeof SET_USERS,
+    users: any
+}
+
+type clearUsersActionType = {
+    type: typeof CLEAR_USERS
+}
+
+type setCurrentPageActionType = {
+    type: typeof SET_CURRENT_PAGE,
+    PageNumber: number
+}
+
+type setTotalUsersCountActionType = {
+    type: typeof SET_TOTAL_USERS_COUNT,
+    totalUsersCount: number
+}
+
+type setUsersAreLoadingActionType = {
+    type: typeof SET_USERS_ARE_LOADING,
+    isLoading: boolean
+}
+
+type setFollowingInProgressActionType = {
+    type: typeof SET_FOLLOWING_IN_PROGRESS,
+    isFollowing: boolean,
+    userId: number
+}
+
+export const FollowAC = (userId: number): FollowACActionType =>{
     return { type: FOLLOW, userId: userId};
 }
 
-export const UnfollowAC = (userId) =>{
+export const UnfollowAC = (userId: number): UnfollowACActionType =>{
     return {type: UNFOLLOW, userId: userId};
 }
 
-export const setUsers = (users) =>{
+export const setUsers = (users: any): setUsersActionType =>{
     return {type: SET_USERS, users};
 }
 
-export const clearUsers = () =>{
+export const clearUsers = (): clearUsersActionType =>{
     return {type: CLEAR_USERS};
 }
 
-export const setCurrentPage = (PageNumber) =>{
+export const setCurrentPage = (PageNumber: number): setCurrentPageActionType =>{
     return {type: SET_CURRENT_PAGE, PageNumber};
 }
 
-export const setTotalUsersCount = (totalUsersCount) =>{
+export const setTotalUsersCount = (totalUsersCount: number): setTotalUsersCountActionType =>{
     return {type: SET_TOTAL_USERS_COUNT, totalUsersCount}
 }
 
-export const setUsersAreLoading = (isLoading) =>{
+export const setUsersAreLoading = (isLoading: boolean): setUsersAreLoadingActionType =>{
     return {type: SET_USERS_ARE_LOADING, isLoading}
 }
-export const setFollowingInProgress = (isFollowing, userId) =>{
+export const setFollowingInProgress = (isFollowing: boolean, userId: number): setFollowingInProgressActionType =>{
     return {type: SET_FOLLOWING_IN_PROGRESS, isFollowing, userId}
 }
 
 
-export const getUsers = (page, pageSize) => async (dispatch) => {
+export const getUsers = (page: number, pageSize: number) => async (dispatch: any) => {
 
     dispatch(setUsersAreLoading(true));
 
@@ -101,31 +161,9 @@ export const getUsers = (page, pageSize) => async (dispatch) => {
     dispatch(setUsersAreLoading(false)); 
 };
 
-// export const unfollow = (userId) => async (dispatch) => {
 
-//     dispatch(setFollowingInProgress(true, userId));
 
-//     let response = await usersAPI.deleteFollow(userId);
-
-//     dispatch(setFollowingInProgress(false, userId));
-//     if (response.resultCode === 0){
-//         dispatch(UnfollowAC(userId));
-//     } 
-// };
-
-// export const follow = (userId) => async (dispatch) => {
-
-//     dispatch(setFollowingInProgress(true, userId));
-
-//     let response = await usersAPI.createFollow(userId)
-
-//     dispatch(setFollowingInProgress(false, userId));
-//     if (response.resultCode === 0){
-//         dispatch(FollowAC(userId));
-//     }
-// };
-
-const setFollowUnfollow = async (dispatch, userId, apiFunction, actionCreator) => {
+const setFollowUnfollow = async (dispatch: any, userId: number, apiFunction: any, actionCreator: any) => {
     dispatch(setFollowingInProgress(true, userId));
 
     let response = await apiFunction(userId);
@@ -136,11 +174,11 @@ const setFollowUnfollow = async (dispatch, userId, apiFunction, actionCreator) =
     }
 };
 
-export const unfollow = (userId) => async (dispatch) => {
+export const unfollow = (userId: number) => async (dispatch: any) => {
     setFollowUnfollow(dispatch, userId, usersAPI.deleteFollow, UnfollowAC);
 };
 
-export const follow = (userId) => async (dispatch) => {
+export const follow = (userId: number) => async (dispatch: any) => {
     setFollowUnfollow(dispatch, userId, usersAPI.createFollow, FollowAC);
 };
 

@@ -7,31 +7,145 @@
     padding: 2px;
     color: greenyellow;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .unselectedPage{
     font-weight: 500;
     font-size: 15px;
-    padding: 2px;
+    padding: 1px;
 }
 
 .paginator{
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .paginatorContent{
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+
 }
 
 .navBtn{
-    margin: 0 10px;
+    margin: 0 5px;
     border-color: green;
     border-radius: 4px;
     background-color: white;
     color:green;
+}
+
+.forMobile{
+    display: none;
+}
+
+.forBigScreens{
+    font-size: 15px; 
+}
+.users{
+    display: flex;
+    flex-wrap: wrap;
+}
+.user{
+    margin-bottom: 30px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.userName{
+    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+
+@media only screen and (min-width: 900px){
+    .user{
+        margin-bottom: 30px;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 716px) and (max-width: 899px){
+    .user{
+        margin-bottom: 30px;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+}
+
+
+@media only screen and (max-width: 715px) and (min-width: 440px){
+    .forMobile{
+        display: inline;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .forBigScreens{
+        display: none;
+    }
+    .navBtn{
+        margin: 0 2px;
+        border-color: green;
+        border-radius: 4px;
+        background-color: white;
+        color:green;
+        font-size: 15px;
+    }
+    .paginator{
+        width: 100%;
+        align-items: center;
+    }
+    .user{
+        margin-bottom: 30px;
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 439px){
+    .forMobile{
+        padding-top: 5px;
+        display: inline;
+        font-size: 10px;
+        font-weight: 600;
+    }
+    .forBigScreens{
+        display: none;
+    }
+    .navBtn{
+        margin: 0 1px;
+        border-color: green;
+        border-radius: 4px;
+        background-color: white;
+        color:green;
+        font-size: 10px;
+    }
+    .paginator{
+        width: 100%;
+        align-items: center;
+    }
+    .user{
+        margin-bottom: 30px;
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+    }
 }

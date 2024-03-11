@@ -10,8 +10,8 @@ import { maxLengthCreator, required } from "../../utils/validators";
 const maxLength100 = maxLengthCreator(100);
 
 const Messages = (props) => {
-    let dialogsArr = props.state.dialogsData.map(el=>(<DialogName name={el.name} id={el.name}/>));
-    let messagesArr = props.state.messagesData.map(el=>(<Message messageText={el.message}/>));
+    let dialogsArr = props.state.dialogsData.map((el, index)=>(<DialogName key={index} name={el.name} id={el.name}/>));
+    let messagesArr = props.state.messagesData.map((el, index)=>(<Message key={index} messageText={el.message}/>));
 
     let addNewMessage = (data) =>{
         alert(data.NewMessageText);

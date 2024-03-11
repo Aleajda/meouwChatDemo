@@ -11,21 +11,21 @@ const instance = axios.create({
 
 
 export const usersAPI = {
-    getUsers(currentPage, pageSize) {
+    getUsers(currentPage: number, pageSize: number) {
         return(
             instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response =>{
                 return response.data;
             })
         );
     },
-    deleteFollow(userId){
+    deleteFollow(userId: number){
         return(
             instance.delete(`follow/${userId}`).then(response => {
                 return response.data;
             })
         );
     },
-    createFollow(userId){
+    createFollow(userId: number){
         return(
             instance.post(`follow/${userId}`).then(response => {
                 return response.data;
@@ -35,30 +35,37 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getProfile(userId){
+    getProfile(userId: number){
         return(
             instance.get(`profile/${userId}`).then(response => {
                 return response.data;
             })
         );
     },
-    getStatus(userId){
+    getStatus(userId: number){
         return(
             instance.get(`profile/status/${userId}`).then(response => {
                 return response.data;
             })
         );
     },
-    updateStatus(status){
+    updateStatus(status: string){
         return(
             instance.put(`profile/status`, {status: status})
         )
     },
-    updatePhoto(file){
+    updatePhoto(file:any){
         const formData = new FormData();
         formData.append("image", file)
         return(
             instance.put(`profile/photo`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
+        )
+    },
+    saveProfile(profileData:any){
+        profileData.aboutMe = "ляля";
+        debugger
+        return(
+            instance.put(`profile`, profileData)
         )
     }
 }
@@ -71,7 +78,7 @@ export const AuthAPI = {
             })  
         );
     },
-    logMe(login, password, rememberMe = false, captcha){
+    logMe(login:string, password:string, rememberMe:boolean = false, captcha: string|null){
         return(
             instance.post("auth/login", {email: login, password: password, rememberMe: rememberMe, captcha: captcha})
         );

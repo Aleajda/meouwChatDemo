@@ -1,7 +1,20 @@
 const add_message = "ADD-MESSAGE";
 
 
-let defaultState = {
+
+export type DefaultStateType = {
+    messagesData: {
+        id: string,
+        message: string
+    }[],
+    dialogsData: {
+        id: string,
+        name: string
+    }[]
+}
+
+
+let defaultState:DefaultStateType = {
     messagesData: [
         { id: "1", message: "Hi i am a TIGER CAT" },
         { id: "2", message: "Hi i am a BROWN CAT" },
@@ -14,7 +27,7 @@ let defaultState = {
     ]
 }
 
-const messagesReducer = (state = defaultState, action) =>{
+const messagesReducer = (state = defaultState, action:any):DefaultStateType =>{
     let stateCopy = {...state};
     switch(action.type){  
         case add_message:
@@ -32,7 +45,7 @@ const messagesReducer = (state = defaultState, action) =>{
     }
 }
 
-export const addMessageActionCreator = (text) =>{
+export const addMessageActionCreator = (text: string) =>{
     return {type: add_message, text};
 }
 

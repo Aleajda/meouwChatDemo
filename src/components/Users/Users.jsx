@@ -2,8 +2,6 @@ import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../images/img.jpg"
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { usersAPI } from "../../api/api";
       
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -36,11 +34,15 @@ const Users = (props) => {
                         <button className={s.navBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(props.currentPage - 1)}>{"<< назад"}</button>
                     </span>
                     
-                    <span>
+                    <span className={s.forBigScreens}>
                         {pages.slice(startPage - 1, endPage).map(p => {
                             return <span onClick={() => props.onPageChanged(p)} className={props.currentPage === p ? s.selectedPage : s.unselectedPage}>{p}</span>
                         })}
                     </span>
+
+                    
+                    <span className={s.forMobile}>{props.currentPage}</span>
+                    
                     
                     <span>
                         <button className={s.navBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(props.currentPage + 1)}>{"вперед >>"}</button>
@@ -48,19 +50,16 @@ const Users = (props) => {
                     </span>
                 </div>
             </div>
-
+            <div className={s.users}>
                 {   
-                    props.users.map(u => <div key={u.id}>
+                    props.users.map(u => <div className={s.user} key={u.id}>
                         <NavLink to={`/profile/${u.id}`}>
                             <div className={s.avaImg}>
                                 <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" />
                             </div>
                         </NavLink>
-                        <div>
+                        <div className={s.userName}>
                             {u.name}
-                        </div>
-                        <div>
-                            {u.status}
                         </div>
                         <div>
                             {u.followed 
@@ -70,6 +69,7 @@ const Users = (props) => {
                     </div>)
                 }
             </div>
+        </div>
         
     );
 }

@@ -14,7 +14,7 @@ const Posts = (props) => {
         data.NewPostText = "";
     }
 
-    let posts = props.MyPostsData.map(p => (<Post likes={p.likes} message= {p.message}/>))
+    let posts = props.MyPostsData.map((p, index) => (<Post key={index} likes={p.likes} message= {p.message}/>))
 
     return (
         <div className={s.postsWrapper}>
@@ -42,7 +42,7 @@ const AddPostForm = (props) =>{
                 validate={[required, maxLength150]}/>
             </div>
             <div>
-                <button class={s.submitBtn}><span>Опубликовать</span></button>
+                <button className={s.submitBtn}><span>Опубликовать</span></button>
             </div>
         </form>
     );

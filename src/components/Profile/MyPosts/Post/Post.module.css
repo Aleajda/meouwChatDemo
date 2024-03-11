@@ -1,6 +1,5 @@
 .item {
   width: 200px;
-  color: green;
   display: flex;
   gap: 10px;
 }
@@ -14,4 +13,11 @@
   word-wrap: break-word;
   width: 200px;
   margin: auto 0;
+}
+
+.message{
+  font-weight: 400;
+}
+.say{
+  font-weight: 600;
 }

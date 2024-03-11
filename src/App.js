@@ -12,6 +12,7 @@ import React, { Suspense, useEffect } from "react";
 import { initializeApp } from "./redux/appReduser";
 import { connect } from "react-redux";
 import Preloader from "./components/additional/Preloader/Preloader";
+import AIchat from "./components/AIchat/AIchat";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
@@ -35,11 +36,12 @@ const App = (props) =>{
                 
                 <div className="app-wrapper-content">
                         <Routes>
+                            <Route path="" element={<ProfileContainer/>} />
                             <Route path="/profile/:userId?" element={<ProfileContainer/>} />
-                            <Route path="/messages/*" element={<MessagesContainer/>} />
-                            <Route path="/news" element={<div>MEAW NOT WORKING</div>} />
-                            <Route path="/music" element={<div>MEAW NOT WORKING</div>} />
-                            <Route path="/settings" element={<div>MEAW NOT WORKING</div>} />
+                            <Route path="/messages/*" element={<div>PAJE NOT WORKING</div>} />
+                            <Route path="/news" element={<div>PAJE NOT WORKING</div>} />
+                            <Route path="/music" element={<div>PAJE NOT WORKING</div>} />
+                            <Route path="/settings" element={<div>PAJE NOT WORKING</div>} />
                             <Route path="/users/*" element={<Suspense fallback={<Preloader/>}><UsersContainer/></Suspense>}/>
                             <Route path="/login" element={<Login/>}/>
                         </Routes>

@@ -58,7 +58,6 @@ const LoginForm = (props) =>{
                 {props.error}
             </div>
             }
-            
             <div>
                 <button>Login</button>
             </div>

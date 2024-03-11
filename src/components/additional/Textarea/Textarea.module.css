@@ -33,3 +33,16 @@
     border-radius: 10px;
     background: #E9EFF6;
 }
+
+.input2{
+    width: 200px;
+    color: black;
+    border: solid greenyellow 2px;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+.input2Container{
+    padding-top: 10px;
+}

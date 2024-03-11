@@ -8,7 +8,7 @@ const Post = (props) => {
                     src="https://memepedia.ru/wp-content/uploads/2022/02/kot-nosok.jpg"
                     alt=""
                 />
-                <div className={s.text}>say: <br/> {props.message}</div>
+                <div className={s.text}><span className={s.say}>say:</span><br/><span className={s.message}>{props.message}</span></div>
             </div>
             <div className={s.text}>likes: {props.likes}</div>
         </div>
