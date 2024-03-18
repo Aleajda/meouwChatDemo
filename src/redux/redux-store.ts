@@ -22,7 +22,7 @@ let reducers = combineReducers({
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace:true, traceLimit:25}) || compose;
 // const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+let store:any = createStore(reducers, applyMiddleware(thunkMiddleware));
 
-window.store = store;
+window.Storage = store;
 export default store;
