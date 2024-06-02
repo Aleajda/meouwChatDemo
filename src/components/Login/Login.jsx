@@ -26,7 +26,6 @@ const Login = (props) =>{
         <div>
             <h1>Login</h1>
             <LoginReduxForm {...props} onSubmit={onSubmit}/>
-            
         </div>
     );
 }

@@ -43,10 +43,12 @@ const ProfileInfo = (props) => {
                             />
                             {props.isOwner &&
                             <div className={s.input__wrapper}>
-                                <label className={s.inputFile}>
-                                <input type="file" name="file" onChange={onPhotoSelect}/>		
-                                <span>Загрузить</span>
-                                </label>
+                                <button className={s.submitBtn}>
+                                    <label className={s.inputFile}>
+                                    <input type="file" name="file" onChange={onPhotoSelect}/>		
+                                    <span>Загрузить</span>
+                                    </label> 
+                                </button>
                             </div>}
                         </div>
                         
