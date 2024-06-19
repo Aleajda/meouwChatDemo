@@ -5,6 +5,7 @@ import { maxLengthCreator, required } from "../../../../utils/validators";
 import s from "./ProfileDataForm.module.css";
 
 const maxLength40 = maxLengthCreator(40);
+const maxLength100 = maxLengthCreator(100);
 
 const ProfileDataForm = (props) =>{
     debugger
@@ -20,7 +21,13 @@ const ProfileDataForm = (props) =>{
                 <b>Имя: </b><Field placeholder="Полное имя" name="fullName" component={Input2} validate={[required, maxLength40]}/>
             </div>
             <div>
+                <b>О себе: </b><Field placeholder="О себе" name="aboutMe" component={Input2} validate={[required, maxLength100]}/>
+            </div>
+            <div>
                 <b>Vk link: </b><Field placeolder="Vk" name="contacts.vk" component={Input2} validate={[required, maxLength40]}/>
+            </div>
+            <div>
+                <b>Git link: </b><Field placeolder="Git" name="contacts.github" component={Input2} validate={[required, maxLength40]}/>
             </div>
             {props.error && 
             <div>

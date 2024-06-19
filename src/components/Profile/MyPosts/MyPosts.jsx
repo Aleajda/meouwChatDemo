@@ -15,7 +15,7 @@ const Posts = (props) => {
         dispatch(reset('post'))
     }
 
-    let posts = props.MyPostsData.map((p, index) => (<Post key={index} likes={p.likes} message= {p.message}/>))
+    let posts = props.MyPostsData.map((p, index) => (<Post profile={props.profile} key={index} likes={p.likes} message= {p.message}/>))
 
     return (
         <div className={s.postsWrapper}>

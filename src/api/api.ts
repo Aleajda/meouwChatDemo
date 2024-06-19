@@ -62,7 +62,6 @@ export const profileAPI = {
         )
     },
     saveProfile(profileData:any){
-        profileData.aboutMe = "ляля";
         debugger
         return(
             instance.put(`profile`, profileData)

@@ -5,6 +5,7 @@ import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import React, { useState } from "react";
 import ProfileDataReduxForm from "./ProfileData/ProfileDataForm";
 import vk from "../../../images/vk3.svg"
+import git from "../../../images/git.svg"
 
 const ProfileInfo = (props) => {
     
@@ -25,12 +26,7 @@ const ProfileInfo = (props) => {
         });
         
     }
-    if (!props.profile){
-        return (
-            <Preloader/>
-        ); 
-    }
-    else{
+    
         return (
             <div className={s.wrapper}>
                 <div className={s.mainWrapper}>
@@ -62,6 +58,9 @@ const ProfileInfo = (props) => {
                                 <div>
                                     <a href={props.profile.contacts.vk} target="_blank"><img src={vk}/></a>
                                 </div>
+                                <div>
+                                    <a href={props.profile.contacts.github} target="_blank"><img src={git}/></a>
+                                </div>
                             </div>
                             <div>
                                 <ProfileStatusWithHooks status = {props.status} updateStatus = {props.updateStatus} isOwner={props.isOwner}/>
@@ -79,7 +78,7 @@ const ProfileInfo = (props) => {
                 </div>
             </div>
         );
-    }   
+       
 };
 
 
@@ -94,7 +93,10 @@ const ProfileData = (props) =>{
                 <b>В поиске работы: </b>{props.profile.lookingForAJob ? "да" : "нет"}
             </div>
             <div>
-                <b>Скиллы: </b>{props.profile.lookingForAJobDescription ? `${props.profile.lookingForAJobDescription}` : "нет описания"}
+                <b>Скиллы: </b>{props.profile.lookingForAJobDescription ? `${props.profile.lookingForAJobDescription}` : "нет"}
+            </div>
+            <div>
+                <b>О себе: </b>{props.profile.aboutMe ? `${props.profile.aboutMe}` : "Этот пользователь решил ничего не рассказывать про себя"}
             </div>
             {props.isOwner?<div><button onClick={props.goToEditMode} className={s.submitBtn}><span>Редактировать</span></button></div>:null}
         </div>
