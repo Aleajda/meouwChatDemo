@@ -49,7 +49,6 @@ exports.profileAPI = {
         return (instance.put(`profile/photo`, formData, { headers: { 'Content-Type': 'multipart/form-data' } }));
     },
     saveProfile(profileData) {
-        profileData.aboutMe = "ляля";
         debugger;
         return (instance.put(`profile`, profileData));
     }
