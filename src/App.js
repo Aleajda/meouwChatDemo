@@ -12,6 +12,7 @@ import Login from "./components/Auth/Login";
 import { compose } from "redux";
 import { withRouter } from "./components/hoc/withRouter";
 import Registration from "./components/Auth/Registration";
+import UsersPosts from "./components/UsersPosts/UsersPosts";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
@@ -37,7 +38,7 @@ const App = (props) =>{
                         <Routes>
                             <Route path="" element={<ProfileContainer/>} />
                             <Route path="/profile/:userId?" element={<ProfileContainer/>} />
-                            <Route path="/messages/*" element={<div>PAJE NOT WORKING</div>} />
+                            <Route path="/messages/*" element={<UsersPosts/>} />
                             <Route path="/news" element={<div>PAJE NOT WORKING</div>} />
                             <Route path="/music" element={<div>PAJE NOT WORKING</div>} />
                             <Route path="/settings" element={<div>PAJE NOT WORKING</div>} />

@@ -90,13 +90,13 @@ const ProfileData = (props) =>{
     return (
         <div className={s.profileData}>
             <div>
-                <b>В поиске работы: </b>{props.profile.lookingForAJob ? "да" : "нет"}
+                <b style={{fontWeight: 500}}>В поиске работы: </b>{props.profile.lookingForAJob ? "да" : "нет"}
             </div>
             <div>
-                <b>Скиллы: </b>{props.profile.lookingForAJobDescription ? `${props.profile.lookingForAJobDescription}` : "нет"}
+                <b style={{fontWeight: 500}}>Скиллы: </b>{props.profile.lookingForAJobDescription ? `${props.profile.lookingForAJobDescription}` : "нет"}
             </div>
             <div>
-                <b>О себе: </b>{props.profile.aboutMe ? `${props.profile.aboutMe}` : "Этот пользователь решил ничего не рассказывать про себя"}
+                <b style={{fontWeight: 500}}>О себе: </b>{props.profile.aboutMe ? `${props.profile.aboutMe}` : "Этот пользователь решил ничего не рассказывать про себя"}
             </div>
             {props.isOwner?<div><button onClick={props.goToEditMode} className={s.submitBtn}><span>Редактировать</span></button></div>:null}
         </div>

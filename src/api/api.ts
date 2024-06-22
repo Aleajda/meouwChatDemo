@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getPostsWithQuery } from "../redux/usersPostsReduser";
 
 
 const instance = axios.create({
@@ -91,5 +92,20 @@ export const AuthAPI = {
         return(
             instance.get("security/get-captcha-url")
         );
+    }
+}
+
+export const usersPostsApi = {
+    getPosts(limit:any, skip:any){
+        debugger
+        return(
+            axios.get(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}`)
+        )
+    },
+    getPostsWithQuery(query: any, limit:any, skip:any){
+        debugger
+        return(
+            axios.get(`https://dummyjson.com/posts/search?q=${query}&limit=${limit}&skip=${skip}`)
+        )
     }
 }
