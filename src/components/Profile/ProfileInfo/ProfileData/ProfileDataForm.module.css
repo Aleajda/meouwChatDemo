@@ -106,3 +106,7 @@
   .submitBtn span:hover:after {
     width: 100%;
   }
+
+  div b{
+    font-weight: 500;
+  }

@@ -1,4 +1,3 @@
-import { stopSubmit } from "redux-form";
 import { AuthAPI } from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
@@ -10,7 +9,8 @@ export type DefaultStateType = {
     login: string | null,
     email: string | null,
     isAuth: boolean,
-    captcha: string | null
+    captcha: string | null,
+    errorMessage: string | null
 }
 
 let defaultState:DefaultStateType = {
@@ -18,7 +18,8 @@ let defaultState:DefaultStateType = {
     login: null,
     email: null,
     isAuth: false,
-    captcha: null
+    captcha: null,
+    errorMessage: null
 }
 
 const authReducer = (state = defaultState, action:any):DefaultStateType =>{
@@ -27,6 +28,11 @@ const authReducer = (state = defaultState, action:any):DefaultStateType =>{
             return {...state, ...action.data}
         case SET_CAPTCHA:
             return {...state, captcha: action.captcha}
+        case 'LOGIN_ERROR':
+            return {
+                ...state,
+                errorMessage: action.payload
+            }
         default:
             return state ;
         
@@ -40,12 +46,13 @@ type setUserDataActionType = {
         id: number | null,
         login: string | null,
         email: string | null,
-        isAuth: boolean
+        isAuth: boolean,
+        errorMessage: string | null
     }
 }
 
-export const setUserData = (id: number|null, login: string|null, email: string|null, isAuth: boolean):setUserDataActionType =>{
-    return {type: SET_USER_DATA, data: {id, login, email, isAuth}}
+export const setUserData = (id: number|null, login: string|null, email: string|null, isAuth: boolean, errorMessage: string|null):setUserDataActionType =>{
+    return {type: SET_USER_DATA, data: {id, login, email, isAuth, errorMessage}}
 }
 
 
@@ -64,7 +71,7 @@ export const setAuthUser = () => async (dispatch:any) => {
 
     if (response.resultCode === 0){
         let {id, login, email} = response.data;
-        dispatch(setUserData(id, login, email, true));
+        dispatch(setUserData(id, login, email, true, ""));
     } 
 }
 
@@ -89,18 +96,23 @@ export const loginUser = (login: string, password: string, rememberMe: boolean|u
     }
     else{
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "something wrong";
-        dispatch(stopSubmit("login", {_error: message}));
+        dispatch(loginError("Неверный логин или пароль"));
     }
-    
 }
 
 export const logoutUser = () => async (dispatch:any) =>{
     let response = await AuthAPI.logoutMe()
 
     if (response.data.resultCode === 0){
-        dispatch(setUserData(null, null, null, false));
+        dispatch(setUserData(null, null, null, false, null));
     }
 }
 
+export const loginError = (errorMessage: string) => {
+    return {
+      type: 'LOGIN_ERROR',
+      payload: errorMessage
+    };
+  };
 
 export default authReducer;

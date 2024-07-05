@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getPostsWithQuery } from "../redux/usersPostsReduser";
 
 
 const instance = axios.create({
@@ -12,9 +11,9 @@ const instance = axios.create({
 
 
 export const usersAPI = {
-    getUsers(currentPage: number, pageSize: number) {
+    getUsers(currentPage: number, pageSize: number, query: string | null = null) {
         return(
-            instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response =>{
+            instance.get(`users?page=${currentPage}&count=${pageSize}&term=${query}`).then(response =>{
                 return response.data;
             })
         );
@@ -63,7 +62,6 @@ export const profileAPI = {
         )
     },
     saveProfile(profileData:any){
-        debugger
         return(
             instance.put(`profile`, profileData)
         )
@@ -97,15 +95,23 @@ export const AuthAPI = {
 
 export const usersPostsApi = {
     getPosts(limit:any, skip:any){
-        debugger
         return(
             axios.get(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}`)
         )
     },
     getPostsWithQuery(query: any, limit:any, skip:any){
-        debugger
         return(
             axios.get(`https://dummyjson.com/posts/search?q=${query}&limit=${limit}&skip=${skip}`)
+        )
+    },
+    setPtatus(){
+        return(
+            axios.post("http://193.19.100.32:7000/api/set-status", {})
+        )
+    },
+    getUser(id:number){
+        return(
+            axios.get(`https://dummyjson.com/users/${id}`)
         )
     }
 }

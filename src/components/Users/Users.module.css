@@ -42,6 +42,7 @@
 }
 
 .forBigScreens{
+    padding-top: 5px;
     font-size: 15px; 
 }
 .users{
@@ -62,6 +63,132 @@
     width: 100%;
     word-wrap: break-word;
 }
+
+.userSearch{
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.userSearch input{
+    width: 250px;
+    color: black;
+    border: solid greenyellow 2px;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    padding: auto;
+    text-align: center;
+}
+
+.userSearch span{
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+/* КНОПКА */
+.submitBtn, .searchBtn {
+    width: 120px;
+    height: 30px;
+    color: black;
+    border-radius: 2px;
+    padding: 0px 0px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 550;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+  .submitBtn, .searchBtn {
+    background: greenyellow;
+    background: radial-gradient(circle, greenyellow 0%, white 100%);
+    padding: 0;
+    border: none;
+  }
+  .submitBtn:before,
+  .submitBtn:after,
+  .searchBtn:before,
+  .searchBtn:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 1px;
+   box-shadow:
+     -1px -1px 20px 0px rgba(255,255,255,1),
+     -4px -4px 5px 0px rgba(255,255,255,1),
+     7px 7px 20px 0px rgba(0,0,0,.4),
+     4px 4px 5px 0px rgba(0,0,0,.3);
+  }
+  .submitBtn:before,
+  .searchBtn:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+  }
+  .submitBtn:after,
+  .searchBtn:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+  }
+  .submitBtn:hover,
+  .searchBtn:hover{
+    background: transparent;
+    color: gray;
+    box-shadow: none;
+  }
+  .submitBtn:hover:before,
+  .searchBtn:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+  .submitBtn:hover:after,
+  .searchBtn:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media only screen and (min-width: 900px){
@@ -84,6 +211,22 @@
         gap: 5px;
         align-items: center;
     }
+    .submitBtn {
+        width: 100px;
+        height: 25px;
+        font-size: 13px;
+    }
+    .navBtn{
+        margin: 0 2px;
+    }
+    .searchBtn{
+        width: 100px;
+        height: 25px;
+        font-size: 13px;
+    }
+    .userSearch input{
+        width: 200px;
+    }
 }
 
 
@@ -92,17 +235,21 @@
         display: inline;
         font-size: 15px;
         font-weight: 600;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
     }
     .forBigScreens{
         display: none;
     }
+    .submitBtn {
+        padding: auto;
+        width: 80px;
+        height: 25px;
+        font-size: 12px;
+    }
     .navBtn{
         margin: 0 2px;
-        border-color: green;
-        border-radius: 4px;
-        background-color: white;
-        color:green;
-        font-size: 15px;
     }
     .paginator{
         width: 100%;
@@ -115,26 +262,41 @@
         flex-direction: column;
         gap: 5px;
         align-items: center;
+    }
+    .searchBtn{
+        width: 80px;
+        height: 25px;
+        font-size: 13px;
+    }
+    .userSearch input{
+        width: 150px;
+        height: 25px;
+    }
+    .userSearch{
+        gap: 5px;
     }
 }
 
 @media only screen and (max-width: 439px){
     .forMobile{
+        padding-left: 5px;
+        padding-right: 2px;
         padding-top: 5px;
         display: inline;
-        font-size: 10px;
+        font-size: 15px;
         font-weight: 600;
     }
     .forBigScreens{
         display: none;
     }
+    .submitBtn {
+        padding: auto;
+        width: 65px;
+        height: 25px;
+        font-size: 11px;
+    }
     .navBtn{
-        margin: 0 1px;
-        border-color: green;
-        border-radius: 4px;
-        background-color: white;
-        color:green;
-        font-size: 10px;
+        margin: 0 2px;
     }
     .paginator{
         width: 100%;
@@ -147,5 +309,21 @@
         flex-direction: column;
         gap: 5px;
         align-items: center;
+    }
+    .searchBtn{
+        width: 70px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .userSearch input{
+        width: 70px;
+        height: 18px;
+    }
+    .userSearch{
+        gap: 3px;
+    }
+    .userSearch span{
+        font-size: 15px;
+        margin-right: 5px;
     }
 }

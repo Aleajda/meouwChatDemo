@@ -8,6 +8,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_USERS_ARE_LOADING = "USERS_ARE_LOADING";
 const SET_FOLLOWING_IN_PROGRESS = "SET_FOLLOWING_IN_PROGRESS";
+const SET_QUERY = "SET_QUERY";
 
 let screenWidth = window.innerWidth;
 
@@ -26,7 +27,8 @@ export type DefaultStateType = {
     totalUsersCount: number,
     currentPage: number,
     isLoading: boolean,
-    isFollowing: any[]
+    isFollowing: any[],
+    query: string
 
 }
 
@@ -36,7 +38,8 @@ let defaultState:DefaultStateType = {
     totalUsersCount: 0,
     currentPage: 1,
     isLoading: false,
-    isFollowing: []
+    isFollowing: [],
+    query: ""
 }
 
 const usersReducer = (state = defaultState, action: any):DefaultStateType =>{
@@ -60,6 +63,8 @@ const usersReducer = (state = defaultState, action: any):DefaultStateType =>{
                 isFollowing: action.isFollowing
                 ? [...state.isFollowing, action.userId]
                 : state.isFollowing.filter(id => id != action.userId)}
+        case SET_QUERY:
+            return {...state, query: action.query}
         default:
             return state ;
         
@@ -150,11 +155,11 @@ export const setFollowingInProgress = (isFollowing: boolean, userId: number): se
 }
 
 
-export const getUsers = (page: number, pageSize: number) => async (dispatch: any) => {
+export const getUsers = (page: number, pageSize: number, query: string = "") => async (dispatch: any) => {
 
     dispatch(setUsersAreLoading(true));
 
-    let response = await usersAPI.getUsers(page, pageSize);
+    let response = await usersAPI.getUsers(page, pageSize, query);
 
     dispatch(setUsers(response.items));
     dispatch(setTotalUsersCount(response.totalCount));
@@ -181,6 +186,15 @@ export const unfollow = (userId: number) => async (dispatch: any) => {
 export const follow = (userId: number) => async (dispatch: any) => {
     setFollowUnfollow(dispatch, userId, usersAPI.createFollow, FollowAC);
 };
+
+export const setQueryAC = (query: string) => {
+    return({type: SET_QUERY, query})
+}
+
+export const setQuery = (query: string) => async (dispatch: any) => {
+    dispatch(setQueryAC(query))
+}
+
 
 
 export default usersReducer;

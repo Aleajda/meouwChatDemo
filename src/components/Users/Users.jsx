@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../images/img.jpg"
 import { NavLink } from "react-router-dom";
+import { setQuery } from "../../redux/usersReducer";
       
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -24,14 +25,26 @@ const Users = (props) => {
         endPage = props.currentPage + 2;
     }
 
+    const inputRef = useRef()
+
+    const queryBtn = () => {
+        if (inputRef.current.value){
+            props.setQuery(inputRef.current.value)
+            inputRef.current.value = ""
+        }
+    }
+
+    const sbrosBtn = () => {
+        props.setQuery("")
+    }
 
     return (
         <div> 
             <div className={s.paginator}>
                 <div className={s.paginatorContent}>
                     <span>
-                        <button className={s.navBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(1)}>{"<< первая"}</button>
-                        <button className={s.navBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(props.currentPage - 1)}>{"<< назад"}</button>
+                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(1)}>{"<< первая"}</button>
+                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(props.currentPage - 1)}>{"<< назад"}</button>
                     </span>
                     
                     <span className={s.forBigScreens}>
@@ -45,9 +58,15 @@ const Users = (props) => {
                     
                     
                     <span>
-                        <button className={s.navBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(props.currentPage + 1)}>{"вперед >>"}</button>
-                        <button className={s.navBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(pagesCount)}>{"последняя >>"}</button>
+                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(props.currentPage + 1)}>{"вперед >>"}</button>
+                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(pagesCount)}>{"конец >>"}</button>
                     </span>
+                </div>
+                <div className={s.userSearch}>
+                        <span>Найти:</span>
+                        <input ref={inputRef} type="text" name="" id="" />
+                        <button className={s.searchBtn} onClick={queryBtn}>Поиск</button>
+                        <button className={s.searchBtn} onClick={sbrosBtn}>Сброс</button>
                 </div>
             </div>
             <div className={s.users}>

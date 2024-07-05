@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { loginUser } from "../../redux/authReducer";
 
 const Login = (props) => {
+    debugger
     const {
         register,
         formState: {

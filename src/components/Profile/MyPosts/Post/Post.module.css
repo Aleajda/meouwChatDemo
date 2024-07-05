@@ -1,7 +1,12 @@
+.postWrapper{
+  margin-bottom: 20px;
+}
+
 .item {
   width: 200px;
   display: flex;
   gap: 10px;
+  margin-bottom: 10px;
 }
 .item img{
   width: 50px;

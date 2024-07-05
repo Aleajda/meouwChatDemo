@@ -9,7 +9,7 @@ const Friends = (props) => {
     return (
         <div>
             <div className={s.text}>
-                Friends
+                Мои друзья
             </div>
             <div className={s.friends}>
                 {arrFriends}

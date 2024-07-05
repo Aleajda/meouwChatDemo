@@ -6,6 +6,7 @@ const DELETE_POST = "DELETE_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const SET_PHOTOS = "SET_PHOTO";
+const EDIT_POST = "EDIT_POST";
 
 
 export type DefaultStateType = {
@@ -40,6 +41,13 @@ const profileReducer = (state = defaultState, action: any):DefaultStateType =>{
             }
             stateCopy.MyPostsData.push(newPost);
             return stateCopy;
+        case EDIT_POST:
+            return {
+                ...stateCopy,
+                MyPostsData: state.MyPostsData.map((post, index) => 
+                    index === action.id ? { ...post, message: action.text } : post
+                ) 
+            }
         case DELETE_POST:
             return {...stateCopy, MyPostsData: action.newPostsData}  
         case SET_USER_PROFILE:
@@ -57,6 +65,12 @@ const profileReducer = (state = defaultState, action: any):DefaultStateType =>{
 type addPostActionType = {
     type: typeof ADD_POST,
     text: string
+}
+
+type editPostActionType = {
+    type: typeof EDIT_POST,
+    text: string,
+    id: number
 }
 
 type deletePostActionType = {
@@ -85,6 +99,10 @@ export const addPostActionCreator = (text: string):addPostActionType =>{
 
 export const deletePost = (newPostsData: any):deletePostActionType =>{
     return {type: DELETE_POST, newPostsData};
+}
+
+export const editPost = (text: string, id: number):editPostActionType =>{
+    return {type: EDIT_POST, text, id};
 }
 
 export const setUserProfile = (profile: any):setUserProfileActionType =>{
