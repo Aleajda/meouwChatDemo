@@ -14,7 +14,7 @@ const Header = (props) => {
     };
 
     return (
-        <header className={s.header}>
+        <header style={props.dark ? {backgroundColor: '#191919', color: 'white'} : {backgroundColor: 'white', color: 'black'}} className={s.header}>
         <img className={s.icon} src={koteyka}></img>
         <div className={s.name}>MEOUWCHAT</div>
         {props.isAuth 
@@ -24,7 +24,7 @@ const Header = (props) => {
                 <div className={s.login}>{props.login}</div>
                 <button className={s.submitBtn} onClick={props.logoutUser}><span>logout</span></button>
             </div>
-            <img src={menuIcon} onClick={toggleNav} className={s.navImg}></img>
+            <img style={{cursor: 'pointer'}} src={menuIcon} onClick={toggleNav} className={s.navImg}></img>
             {showNav && <div className={s.fullScreenNav}><NavigationWithoutFriends toggleNav={toggleNav}/></div>}
         </div>
         :

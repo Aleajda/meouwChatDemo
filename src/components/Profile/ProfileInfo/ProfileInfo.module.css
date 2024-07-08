@@ -8,10 +8,7 @@
 }
 
 .avaWrapper{
-  
   width: 200px;
-    /* ПОМЕНЯТЬ ЦВЕТ */
-  background-color: white;
 }
 
 .ava{
@@ -25,7 +22,7 @@
 }
 
 .avaImg{
-  width: 60%;
+  width: 75%;
   border-radius: 100%;
   margin-bottom: 20px;
 }
@@ -38,8 +35,7 @@
 
 
 .userNameWrapper{
-  /* ПОМЕНЯТЬ ЦВЕТ */
-  background-color: white;
+  
 }
 
 
@@ -77,7 +73,6 @@
 .submitBtn {
   width: 100px;
   height: 25px;
-  color: black;
   border-radius: 2px;
   padding: 0px 0px;
   font-family: 'Lato', sans-serif;
@@ -111,11 +106,6 @@
   content: "";
   height: 0%;
   width: 1px;
- box-shadow:
-   -1px -1px 20px 0px rgba(255,255,255,1),
-   -4px -4px 5px 0px rgba(255,255,255,1),
-   7px 7px 20px 0px rgba(0,0,0,.4),
-   4px 4px 5px 0px rgba(0,0,0,.3);
 }
 .submitBtn:before {
   right: 0;
@@ -128,7 +118,6 @@
   transition: all 500ms ease;
 }
 .submitBtn:hover{
-  background: transparent;
   color: gray;
   box-shadow: none;
 }
@@ -144,11 +133,7 @@
 .submitBtn span:after {
   position: absolute;
   content: "";
-  box-shadow:
-   -1px -1px 20px 0px rgba(255,255,255,1),
-   -4px -4px 5px 0px rgba(255,255,255,1),
-   7px 7px 20px 0px rgba(0,0,0,.4),
-   4px 4px 5px 0px rgba(0,0,0,.3);
+  
 }
 .submitBtn span:before {
   left: 0;
@@ -190,7 +175,6 @@
 	text-decoration: none;
 	font-size: 14px;
 	vertical-align: middle;
-	color: black;
 	text-align: center;
 	border-radius: 4px;
 	background: greenyellow;
@@ -247,8 +231,19 @@
 
 @media only screen and (max-width: 600px) {
   .avaImg{
-    width: 70%;
+    width: 100%;
     border-radius: 100%;
+  }
+  .shortInfo{
+    font-size: 20px;
+  }
+
+  .profileData{
+    padding-left: 15px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .input__wrapper .submitBtn{
@@ -268,7 +263,6 @@
     text-decoration: none;
     font-size: 10px;
     vertical-align: middle;
-    color: black;
     text-align: center;
     border-radius: 4px;
     background-color: #419152;
@@ -286,8 +280,6 @@
   }
   .avaWrapper{
     width: 140px;
-      /* ПОМЕНЯТЬ ЦВЕТ */
-    background-color: white;
   }
   .ava{
     margin-top: 40px;

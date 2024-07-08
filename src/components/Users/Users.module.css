@@ -129,11 +129,6 @@
     content: "";
     height: 0%;
     width: 1px;
-   box-shadow:
-     -1px -1px 20px 0px rgba(255,255,255,1),
-     -4px -4px 5px 0px rgba(255,255,255,1),
-     7px 7px 20px 0px rgba(0,0,0,.4),
-     4px 4px 5px 0px rgba(0,0,0,.3);
   }
   .submitBtn:before,
   .searchBtn:before {
@@ -149,7 +144,6 @@
   }
   .submitBtn:hover,
   .searchBtn:hover{
-    background: transparent;
     color: gray;
     box-shadow: none;
   }

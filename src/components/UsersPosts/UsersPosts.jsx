@@ -1,13 +1,16 @@
 import { connect } from "react-redux"
 import s from "./UsersPosts.module.css"
-import { deletePosts, deletePostsWquery, getPosts, getPostsWithQuery } from "../../redux/usersPostsReduser";
+import { deletePosts, deletePostsWquery, getPosts, getPostsWithQuery } from "../../redux/usersPostsReducer";
 import { useEffect, useState } from "react";
 import Preloader from "../additional/Preloader/Preloader";
 import { useForm } from "react-hook-form";
 import { usersPostsApi } from "../../api/api";
 import Like from "../additional/like/Like";
 import DisLike from "../additional/dislike/DisLike";
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, SyncOutlined } from "@ant-design/icons";
+import { auto } from "openai/_shims/registry.mjs";
+import { compose } from "redux";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
 
 const UsersPosts = (props) =>{
     let limit = 7;
@@ -26,7 +29,7 @@ const UsersPosts = (props) =>{
 
     useEffect(() => {
         function handleScroll() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight*0.95) {
             debugger
             setIsBottom(true);
         } else {
@@ -88,9 +91,12 @@ const UsersPosts = (props) =>{
 
     }
 
-    if (!props.posts){
-        return <Preloader/>
+    if (props.posts.length <= 0){
+
+        return <div style={{display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center'}}><SyncOutlined style={{fontSize: '20vw'}} spin={true}/></div> 
+
     }
+    
     return(
         <div className={s.wrapper}>
                 <form className={s.queryForm} onSubmit={handleSubmit(onSubmit)}>
@@ -129,7 +135,7 @@ let mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, {getPosts, getPostsWithQuery, deletePosts, deletePostsWquery})(UsersPosts)
+export default compose(connect(mapStateToProps, {getPosts, getPostsWithQuery, deletePosts, deletePostsWquery}), withAuthRedirect)(UsersPosts)
 
 
 export const UsersPost = (props) => {
@@ -157,7 +163,7 @@ export const UsersPost = (props) => {
     return(
         <div className={s.post}>
             {user
-            ? <p className={s.userName}>
+            ? <div className={s.userName}>
                 <div className={s.tooltip}>
                     <div>Полное имя: {user.firstName + " " + user.lastName}</div>
                     <div>Возраст: {user.age}</div>
@@ -166,8 +172,8 @@ export const UsersPost = (props) => {
                     <div style={{ position: 'relative', marginBottom: '2px' }}>Фото профиля: <img style={{ width: '25px', position: 'absolute', top: -5}} src={user.image} alt="" /></div>
                     <div>Телефон: {user.phone}</div>
                 </div>
-            <span className={s.author}>Автор:&nbsp;</span>{user.username}</p> 
-            : <p><span className={s.author}>Автор:&nbsp;</span><Preloader/></p>
+            <span className={s.author}>Автор:&nbsp;</span>{user.username}</div> 
+            : <p><span className={s.author}>Автор:&nbsp;</span><SyncOutlined spin={true}/></p>
             }
             <p className={s.postTitle}>{props.title}</p>
             <p className={s.postBody}>{props.body}</p>

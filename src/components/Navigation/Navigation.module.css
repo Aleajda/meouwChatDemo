@@ -1,5 +1,4 @@
 .item {
-    color: black;
     font-size: large;
     margin: 0 auto;
     font-size: 30px;
@@ -31,7 +30,7 @@
 
 .item a {
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 
 .item a.activeLink {

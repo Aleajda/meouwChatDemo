@@ -14,7 +14,7 @@ let screenWidth = window.innerWidth;
 
 let usersCount = 12;
 
-if (screenWidth > 715){
+if (screenWidth > 715 && screenWidth <= 899){
     usersCount = 16;
 }
 else if (screenWidth > 899){

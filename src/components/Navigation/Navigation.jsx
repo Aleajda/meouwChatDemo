@@ -10,7 +10,6 @@ const Navigation = (props) => {
         <div className={s.nav}>
         <nav>
         <div className={s.item}><NavLink to="/profile" className={({isActive}) => isActive ? s.activeLink : ""}>Профиль</NavLink></div>
-        <div className={s.item}><NavLink to="/messages" className={({isActive}) => isActive ? s.activeLink : ""}>Посты</NavLink></div>
         <div className={s.item}><NavLink to="/news" className={({isActive}) => isActive ? s.activeLink : ""}>Новости</NavLink></div>
         <div className={s.item}><NavLink to="/music" className={({isActive}) => isActive ? s.activeLink : ""}>Музыка</NavLink></div>
         <div className={s.item}><NavLink to="/settings" className={({isActive}) => isActive ? s.activeLink : ""}>Настройки</NavLink></div>
