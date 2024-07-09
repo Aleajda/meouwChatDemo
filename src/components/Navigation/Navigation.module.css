@@ -37,3 +37,8 @@
     color: greenyellow;
 }
 
+.item.dark a.activeLink {
+    color: rgba(3, 110, 209, 0.63);
+}
+
+

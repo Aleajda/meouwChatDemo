@@ -9,6 +9,7 @@ import { reducer as formReducer } from 'redux-form';
 import appReducer from "./appReducer";
 import usersPostReducer from "./usersPostsReducer";
 import settingsReducer from "./settingsReducer";
+import musicReducer from "./musicReducer";
 
 let reducers = combineReducers({
     ProfilePage: profileReducer,
@@ -19,6 +20,7 @@ let reducers = combineReducers({
     App: appReducer,
     Posts: usersPostReducer,
     Settings: settingsReducer,
+    Music: musicReducer,
     form: formReducer
 });
 

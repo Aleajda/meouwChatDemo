@@ -15,6 +15,7 @@ import Registration from "./components/Auth/Registration";
 import UsersPosts from "./components/UsersPosts/UsersPosts";
 import { SyncOutlined } from "@ant-design/icons";
 import Settings from "./components/Settings/Settings";
+import Music from "./components/Music/Music";
 
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
@@ -41,7 +42,7 @@ const App = (props) =>{
                             <Route path="*" element={<ProfileContainer/>} />
                             <Route path="/profile/:userId?" element={<ProfileContainer/>} />
                             <Route path="/news" element={<UsersPosts/>} />
-                            <Route path="/music" element={<div>PAJE NOT WORKING</div>} />
+                            <Route path="/music" element={<Music/>} />
                             <Route path="/settings" element={<Settings/>} />
                             <Route path="/users/*" element={<Suspense fallback={<Preloader/>}><UsersContainer/></Suspense>}/>
                             <Route path="/login" element={<Login/>}/>

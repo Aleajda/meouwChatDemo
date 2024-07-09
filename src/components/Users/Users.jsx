@@ -48,8 +48,8 @@ const Users = (props) => {
                     </span>
                     
                     <span className={s.forBigScreens}>
-                        {pages.slice(startPage - 1, endPage).map(p => {
-                            return <span onClick={() => props.onPageChanged(p)} className={props.currentPage === p ? s.selectedPage : s.unselectedPage}>{p}</span>
+                        {pages.slice(startPage - 1, endPage).map((p, index) => {
+                            return <span key={index} onClick={() => props.onPageChanged(p)} className={props.currentPage === p ? s.selectedPage : s.unselectedPage}>{p}</span>
                         })}
                     </span>
 

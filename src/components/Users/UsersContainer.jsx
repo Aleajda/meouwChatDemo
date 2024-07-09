@@ -13,7 +13,6 @@ const UsersContainer = (props) =>{
     
     useEffect(() =>{
         props.getUsers(props.currentPage, props.pageSize, props.query);
-        debugger
         return () =>{
             props.clearUsers();
         }

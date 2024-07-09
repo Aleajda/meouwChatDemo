@@ -3,7 +3,10 @@ import { setDark, setWhite } from "../../redux/settingsReducer"
 
 const Settings = (props) =>{
     return(
-        <button onClick={props.dark ? props.setWhite : props.setDark}>сменить тему</button>
+        <div>
+            <button onClick={props.dark ? props.setWhite : props.setDark}>сменить тему</button>
+        </div>
+        
     )
 }
 

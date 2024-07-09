@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import NavigationWithoutFriends from "../Navigation/NavigationWithoutFriends";
 import koteyka from "../../images/koteyka.gif";
 import menuIcon from "../../images/iconmenu2.svg"
+import darkKoteyka from "../../images/darkKoteyka.png"
 
 const Header = (props) => {
 
@@ -15,7 +16,7 @@ const Header = (props) => {
 
     return (
         <header style={props.dark ? {backgroundColor: '#191919', color: 'white'} : {backgroundColor: 'white', color: 'black'}} className={s.header}>
-        <img className={s.icon} src={koteyka}></img>
+        <img className={s.icon} style={{marginLeft: '10px'}} src={props.dark ? darkKoteyka : darkKoteyka}></img>
         <div className={s.name}>MEOUWCHAT</div>
         {props.isAuth 
         ?

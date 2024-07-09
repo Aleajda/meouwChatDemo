@@ -115,3 +115,11 @@ export const usersPostsApi = {
         )
     }
 }
+
+export const musicApi = {
+    getSongs(limit:any, query:any, genre:any){
+        return(
+            axios.get(`https://api.jamendo.com/v3.0/tracks/?client_id=a5cb1c79&format=jsonpretty&limit=${limit}&namesearch=${query}&fuzzytags=${genre}`)
+        )
+    }
+}
