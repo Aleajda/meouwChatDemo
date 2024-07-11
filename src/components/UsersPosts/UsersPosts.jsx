@@ -101,9 +101,19 @@ const UsersPosts = (props) =>{
         <div className={s.wrapper}>
                 <form className={s.queryForm} onSubmit={handleSubmit(onSubmit)}>
                     <div className={s.buttons}>
-                        <input className={s.inputQuery} type="text" placeholder="Введите поисковой запрос" {...register("query")}/>
-                        <button className={s.submitBtn}>Поиск</button>
-                        <button type="btn" className={s.submitBtn} onClick={resetSearch}>Сброс</button>
+                        <input style={props.dark ? {border: 'solid rgb(47, 248, 255) 2px'} : null} className={s.inputQuery} type="text" placeholder="Введите поисковой запрос" {...register("query")}/>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.submitBtn}>
+                            Поиск
+                        </button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            type="btn"
+                            className={s.submitBtn}
+                            onClick={resetSearch}>
+                            Сброс
+                        </button>
                     </div>
                 </form>
             <div className={s.posts}>
@@ -131,7 +141,8 @@ const UsersPosts = (props) =>{
 let mapStateToProps = (state) => ({
     posts: state.Posts.posts,
     postsWquery: state.Posts.postsWquery,
-    endSkip: state.Posts.endSkip
+    endSkip: state.Posts.endSkip,
+    dark: state.Settings.dark
 })
 
 

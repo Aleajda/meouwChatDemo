@@ -37,7 +37,11 @@ const Post = (props) => {
                     {editMode
                     ?<div>
                         <input ref={inputRef} defaultValue={props.message} placeholder="новый текст"></input>
-                        <button className={s.submitBtn} onClick={savePost}>save</button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null} 
+                            className={s.submitBtn} onClick={savePost}>
+                            save
+                        </button>
                     </div>
                     :<span className={s.message}>{props.message}</span>
                     }

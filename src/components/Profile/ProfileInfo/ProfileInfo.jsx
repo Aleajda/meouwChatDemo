@@ -39,10 +39,11 @@ const ProfileInfo = (props) => {
                             />
                             {props.isOwner &&
                             <div className={s.input__wrapper}>
-                                <button className={s.submitBtn}>
+                                <button 
+                                    className={s.submitBtn}>
                                     <label className={s.inputFile}>
-                                    <input type="file" name="file" onChange={onPhotoSelect}/>		
-                                    <span>Загрузить</span>
+                                    <input  type="file" name="file" onChange={onPhotoSelect}/>		
+                                    <span style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null} >Загрузить</span>
                                     </label> 
                                 </button>
                             </div>}
@@ -69,8 +70,8 @@ const ProfileInfo = (props) => {
                                 Краткая информация: 
                             </div>
                             {editMode
-                            ?<ProfileDataReduxForm initialValues={props.profile} onSubmit={onSubmit}/>
-                            :<ProfileData goToEditMode={() => {setEditMode(true)}} profile={props.profile} isOwner={props.isOwner}/>
+                            ?<ProfileDataReduxForm dark={props.dark} initialValues={props.profile} onSubmit={onSubmit}/>
+                            :<ProfileData goToEditMode={() => {setEditMode(true)}} profile={props.profile} dark={props.dark} isOwner={props.isOwner}/>
                             }
                             
                         </div>
@@ -98,7 +99,15 @@ const ProfileData = (props) =>{
             <div>
                 <b style={{fontWeight: 500}}>О себе: </b>{props.profile.aboutMe ? `${props.profile.aboutMe}` : "Этот пользователь решил ничего не рассказывать про себя"}
             </div>
-            {props.isOwner?<div><button onClick={props.goToEditMode} className={s.submitBtn}><span>Редактировать</span></button></div>:null}
+            {props.isOwner
+            ?<div>
+                <button
+                    style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null} 
+                    onClick={props.goToEditMode} className={s.submitBtn}>
+                    <span>Редактировать</span>
+                </button>
+            </div>
+            :null}
         </div>
     )
 }

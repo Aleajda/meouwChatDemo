@@ -30,13 +30,13 @@ const Registration = (props) => {
             <div className={s.formDiv}>
                 <input type="text" className={s.formInput}
                 {...register("username", {required: true})}/>
-                <label className={s.formLabel}>Username</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Username</label>
             </div>
             
             <div className={s.formDiv + ' ' + s.formDivPas}>
                 <input type="password" className={s.formInput} 
                 {...register("password", {required: true})}/>
-                <label className={s.formLabel}>Password</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Password</label>
             </div>
             <div className={s.error}>
                 <p style={{color: "red"}}>registration is not available</p>
@@ -51,7 +51,8 @@ const Registration = (props) => {
 }
 
 let mapStateToProps = (state) => ({
-    isAuth: state.Auth.isAuth
+    isAuth: state.Auth.isAuth,
+    dark: state.Settings.dark
 })
 
 export default connect(mapStateToProps, null)(Registration);

@@ -151,7 +151,7 @@
 }
 .loginLink a{
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 .header{
@@ -184,7 +184,7 @@
   border: none;
 }
 .submitBtn span {
-  padding-top: 5px;
+  padding-top: 3px;
   position: relative;
   display: block;
   width: 100%;

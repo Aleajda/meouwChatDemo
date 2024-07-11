@@ -38,18 +38,26 @@ const Users = (props) => {
         props.setQuery("")
     }
 
+    let dark = props.dark ? s.dark : ""
+
     return (
         <div> 
             <div className={s.paginator}>
                 <div className={s.paginatorContent}>
                     <span>
-                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(1)}>{"<< первая"}</button>
-                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(props.currentPage - 1)}>{"<< назад"}</button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(1)}>{"<< первая"}
+                        </button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === 1} onClick={() => props.onPageChanged(props.currentPage - 1)}>{"<< назад"}
+                        </button>
                     </span>
                     
                     <span className={s.forBigScreens}>
                         {pages.slice(startPage - 1, endPage).map((p, index) => {
-                            return <span key={index} onClick={() => props.onPageChanged(p)} className={props.currentPage === p ? s.selectedPage : s.unselectedPage}>{p}</span>
+                            return <span key={index} onClick={() => props.onPageChanged(p)} className={props.currentPage === p ? s.selectedPage + " " + dark : s.unselectedPage}>{p}</span>
                         })}
                     </span>
 
@@ -58,15 +66,29 @@ const Users = (props) => {
                     
                     
                     <span>
-                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(props.currentPage + 1)}>{"вперед >>"}</button>
-                        <button className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(pagesCount)}>{"конец >>"}</button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(props.currentPage + 1)}>{"вперед >>"}
+                        </button>
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.navBtn + " " + s.submitBtn} disabled={props.currentPage === pagesCount} onClick={() => props.onPageChanged(pagesCount)}>{"конец >>"}
+                        </button>
                     </span>
                 </div>
                 <div className={s.userSearch}>
                         <span>Найти:</span>
-                        <input ref={inputRef} type="text" name="" id="" />
-                        <button className={s.searchBtn} onClick={queryBtn}>Поиск</button>
-                        <button className={s.searchBtn} onClick={sbrosBtn}>Сброс</button>
+                        <input style={props.dark ? {border: 'solid rgb(47, 248, 255) 2px'} : null} ref={inputRef} type="text" name="" id="" />
+                        <button
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.searchBtn} onClick={queryBtn}>
+                            Поиск
+                        </button>
+                        <button 
+                            style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                            className={s.searchBtn} onClick={sbrosBtn}>
+                            Сброс
+                        </button>
                 </div>
             </div>
             <div className={s.users}>

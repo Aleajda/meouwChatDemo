@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 
 let mapStateToProps = (state) =>({
     NewPostText: state.ProfilePage.NewPostText,
-    MyPostsData: state.ProfilePage.MyPostsData
+    MyPostsData: state.ProfilePage.MyPostsData,
+    dark: state.Settings.dark
 })
 
 let mapDispatchToProps = (dispatch) =>{

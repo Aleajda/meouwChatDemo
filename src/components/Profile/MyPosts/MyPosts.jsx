@@ -15,7 +15,7 @@ const Posts = (props) => {
         dispatch(reset('post'))
     }
 
-    let posts = props.MyPostsData.map((p, index) => (<Post MyPostsData = {props.MyPostsData} profile={props.profile} key={index} index={index} likes={p.likes} message= {p.message}/>))
+    let posts = props.MyPostsData.map((p, index) => (<Post MyPostsData = {props.MyPostsData} profile={props.profile} key={index} index={index} likes={p.likes} message= {p.message} dark={props.dark}/>))
 
     return (
         <div className={s.postsWrapper}>
@@ -27,7 +27,7 @@ const Posts = (props) => {
                 <div className={s.addPostText}>
                     Добавить пост
                 </div>
-                <AddPostFormRedux onSubmit={addPost}/>
+                <AddPostFormRedux dark={props.dark} onSubmit={addPost}/>
             </div>
         </div>
     );
@@ -43,7 +43,7 @@ const AddPostForm = (props) =>{
                 validate={[required, maxLength150]}/>
             </div>
             <div>
-                <button className={s.submitBtn}><span>Опубликовать</span></button>
+                <button style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null} className={s.submitBtn}><span>Опубликовать</span></button>
             </div>
         </form>
     );

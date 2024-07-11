@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { loginUser } from "../../redux/authReducer";
 
 const Login = (props) => {
-    debugger
     const {
         register,
         formState: {
@@ -39,7 +38,7 @@ const Login = (props) => {
             <div className={s.formDiv}>
                 <input type="text" className={s.formInput}
                 {...register("username", {required: true})}/>
-                <label className={s.formLabel}>Username</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Username</label>
             </div>
             <div>
                 {errors?.password && <p style={{color: "red"}}>Поле обязательно к заполнению</p>}
@@ -47,7 +46,7 @@ const Login = (props) => {
             <div className={s.formDiv + ' ' + s.formDivPas}>
                 <input type="password" className={s.formInput} 
                 {...register("password", {required: true})}/>
-                <label className={s.formLabel}>Password</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Password</label>
             </div>
             {props.captcha
             ?
@@ -79,7 +78,8 @@ const Login = (props) => {
 let mapStateToProps = (state) => ({
     isAuth: state.Auth.isAuth,
     captcha: state.Auth.captcha,
-    errorMessage: state.Auth.errorMessage
+    errorMessage: state.Auth.errorMessage,
+    dark: state.Settings.dark
 })
 
 export default connect(mapStateToProps, {loginUser})(Login);

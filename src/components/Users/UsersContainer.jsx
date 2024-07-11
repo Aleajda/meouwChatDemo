@@ -41,7 +41,8 @@ let mapStateToProps = (state) =>{
         currentPage: state.Users.currentPage,
         isLoading: state.Users.isLoading,
         isFollowing: state.Users.isFollowing,
-        query: state.Users.query
+        query: state.Users.query,
+        dark: state.Settings.dark
     }
 }
 

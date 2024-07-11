@@ -34,7 +34,10 @@ const Music = (props) =>{
         <div className={s.formWrapper}>
             <form className={s.searchForm} onSubmit={handleSubmit(onSubmit)}>
                 <div className={s.queries}>
-                    <input className={s.inputQuery} type="text" {...register("query")}/>
+                    <input 
+                        style={props.dark ? {border: 'solid rgb(47, 248, 255) 2px'} : null}
+                        className={s.inputQuery} type="text" {...register("query")}
+                    />
                     <div className={s.radioBtn}>
                         <input
                             type="radio"
@@ -65,7 +68,12 @@ const Music = (props) =>{
                         <label htmlFor="option3">Рок</label>
                     </div>
                 </div>
-                <button className={s.submitBtn}  type="submit">Поиск</button>
+                <button
+                    style={props.dark ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)'} : null}
+                    className={s.submitBtn}
+                    type="submit">
+                    Поиск
+                </button>
             </form>
         </div>
         <div className={s.wrapper}>
@@ -85,7 +93,8 @@ const Music = (props) =>{
 
 
 let mapStateToProps = (state) => ({
-    songs: state.Music.songs
+    songs: state.Music.songs,
+    dark: state.Settings.dark
 })
 
 
