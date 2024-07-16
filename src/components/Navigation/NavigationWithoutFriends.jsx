@@ -13,8 +13,9 @@ const Navigation = (props) => {
         <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/profile" className={({isActive}) => isActive ? s.activeLink : "" + " " + props.dark ? s.dark : ""}>Профиль</NavLink></div>
         <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/news" className={({isActive}) => isActive ? s.activeLink : ""}>Новости</NavLink></div>
         <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/music" className={({isActive}) => isActive ? s.activeLink : ""}>Музыка</NavLink></div>
-        <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/settings" className={({isActive}) => isActive ? s.activeLink : ""}>Настройки</NavLink></div>
         <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/users" className={({isActive}) => isActive ? s.activeLink : ""}>Друзья</NavLink></div>
+        <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/games" className={({isActive}) => isActive ? s.activeLink : ""}>Игры</NavLink></div>
+        <div className={s.item + " " + dark}><NavLink onClick={props.toggleNav} to="/settings" className={({isActive}) => isActive ? s.activeLink : ""}>Настройки</NavLink></div>
         </nav>
         </div>
         

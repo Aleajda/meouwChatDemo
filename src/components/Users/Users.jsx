@@ -96,7 +96,7 @@ const Users = (props) => {
                     props.users.map(u => <div className={s.user} key={u.id}>
                         <NavLink to={`/profile/${u.id}`}>
                             <div className={s.avaImg}>
-                                <img src={u.photos.small != null ? u.photos.small : userPhoto} alt="" />
+                                <img style={{borderRadius: "100%"}} src={u.photos.small != null ? u.photos.small : userPhoto} alt="" />
                             </div>
                         </NavLink>
                         <div className={s.userName}>
@@ -104,8 +104,14 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed 
-                                ? <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {props.unfollow(u.id);}}>Unfollow</button>
-                                : <button disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {props.follow(u.id);}}>Follow</button>}
+                                ? <button 
+                                    style={props.dark
+                                    ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)', borderRadius: "13px", borderWidth: "1px", cursor: "pointer"}
+                                    : {background: 'greenyellow', background: 'radial-gradient(circle, greenyellow 0%, white 100%)', borderRadius: "13px", borderWidth: "1px", cursor: "pointer"}} disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {props.unfollow(u.id);}}>Unfollow</button>
+                                : <button 
+                                    style={props.dark
+                                    ? {background: 'rgb(47, 248, 255)', background: 'radial-gradient(circle, rgb(47, 248, 255) 0%, white 100%)', borderRadius: "13px", borderWidth: "1px", cursor: "pointer"}
+                                    : {background: 'greenyellow', background: 'radial-gradient(circle, greenyellow 0%, white 100%)', borderRadius: "13px", borderWidth: "1px", cursor: "pointer"}}disabled={props.isFollowing.some(id => id === u.id)} onClick={() => {props.follow(u.id);}}>Follow</button>}
                         </div>
                     </div>)
                 }

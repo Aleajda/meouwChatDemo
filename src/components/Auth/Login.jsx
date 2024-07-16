@@ -36,7 +36,7 @@ const Login = (props) => {
                 {errors?.username && <p style={{color: "red"}}>Поле обязательно к заполнению</p> }
             </div>
             <div className={s.formDiv}>
-                <input type="text" className={s.formInput}
+                <input style={props.dark ? {color: 'white'} : null} type="text" className={s.formInput}
                 {...register("username", {required: true})}/>
                 <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Username</label>
             </div>
@@ -44,7 +44,7 @@ const Login = (props) => {
                 {errors?.password && <p style={{color: "red"}}>Поле обязательно к заполнению</p>}
             </div>
             <div className={s.formDiv + ' ' + s.formDivPas}>
-                <input type="password" className={s.formInput} 
+                <input style={props.dark ? {color: 'white'} : null} type="password" className={s.formInput} 
                 {...register("password", {required: true})}/>
                 <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Password</label>
             </div>

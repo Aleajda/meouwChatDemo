@@ -16,7 +16,7 @@ import UsersPosts from "./components/UsersPosts/UsersPosts";
 import { SyncOutlined } from "@ant-design/icons";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-
+import Games, { AgeOfTanks, CutTheRope, FlyOrDie, Game2048, GoBattles, HelixJump, Hextris, MurderMafia, Rodha, ShapeCrusher, TableTennis, WaterSortPuzzle } from "./components/Games/Games";
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 
@@ -47,6 +47,19 @@ const App = (props) =>{
                             <Route path="/users/*" element={<Suspense fallback={<Preloader/>}><UsersContainer/></Suspense>}/>
                             <Route path="/login" element={<Login/>}/>
                             <Route path="/registration" element={<Registration/>}/>
+                            <Route path="/games" element={<Games/>}/>
+                            <Route path="/games/flyordie" element={<FlyOrDie/>}/>
+                            <Route path="/games/rodha" element={<Rodha/>}/>
+                            <Route path="/games/ageoftanks" element={<AgeOfTanks/>}/>
+                            <Route path="/games/2048" element={<Game2048/>}/>
+                            <Route path="/games/cuttherope" element={<CutTheRope/>}/>
+                            <Route path="/games/tabletennis" element={<TableTennis/>}/>
+                            <Route path="/games/watersortpuzzle" element={<WaterSortPuzzle/>}/>
+                            <Route path="/games/hextris" element={<Hextris/>}/>
+                            <Route path="/games/helixjump" element={<HelixJump/>}/>
+                            <Route path="/games/murdermafia" element={<MurderMafia/>}/>
+                            <Route path="/games/shapecrusher" element={<ShapeCrusher/>}/>
+                            <Route path="/games/gobattles" element={<GoBattles/>}/>
                         </Routes>
                 </div>
             </div>

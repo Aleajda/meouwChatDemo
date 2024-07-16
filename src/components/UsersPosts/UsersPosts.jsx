@@ -122,13 +122,13 @@ const UsersPosts = (props) =>{
                     ?
                         props.postsWquery
                         ?
-                        props.postsWquery.map(p => <UsersPost key={p.id} title={p.title} body={p.body} userId={p.userId} reactions={p.reactions} views={p.views}/>)
+                        props.postsWquery.map(p => <UsersPost key={p.id} dark={props.dark} title={p.title} body={p.body} userId={p.userId} reactions={p.reactions} views={p.views}/>)
                         :
                         null
                     :
                         props.posts
                         ?
-                        props.posts.map(p => <UsersPost key={p.id} title={p.title} body={p.body} userId={p.userId} reactions={p.reactions} views={p.views}/>)
+                        props.posts.map(p => <UsersPost key={p.id} dark={props.dark} title={p.title} body={p.body} userId={p.userId} reactions={p.reactions} views={p.views}/>)
                         :
                         null
                 }
@@ -175,7 +175,7 @@ export const UsersPost = (props) => {
         <div className={s.post}>
             {user
             ? <div className={s.userName}>
-                <div className={s.tooltip}>
+                <div className={s.tooltip} style={props.dark ?  {border: "solid rgb(47, 248, 255) 2px", borderStyle: "dashed"} : null}>
                     <div>Полное имя: {user.firstName + " " + user.lastName}</div>
                     <div>Возраст: {user.age}</div>
                     <div>Почта: {user.email}</div>
