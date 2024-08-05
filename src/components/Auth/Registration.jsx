@@ -25,25 +25,25 @@ const Registration = (props) => {
     return(
         <div className={s.lForm}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-            <h1 className={s.formTitle}>Sign Up</h1>
+            <h1 className={s.formTitle}>Регистрация</h1>
 
             <div className={s.formDiv}>
                 <input style={props.dark ? {color: 'white'} : null} type="text" className={s.formInput}
                 {...register("username", {required: true})}/>
-                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Username</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Логин</label>
             </div>
             
             <div className={s.formDiv + ' ' + s.formDivPas}>
                 <input style={props.dark ? {color: 'white'} : null} type="password" className={s.formInput} 
                 {...register("password", {required: true})}/>
-                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Password</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Пароль</label>
             </div>
             <div className={s.error}>
-                <p style={{color: "red"}}>registration is not available</p>
+                <p style={{color: "red"}}>регистрация недоступна</p>
             </div>
-            <button className={s.formButton}>Sign Up</button>
+            <button className={s.formButton}>Зарегистрировать</button>
             <div class={s.signUpLink}>
-                <NavLink to={"/login"}>Already have an account? Sign In</NavLink>
+                <NavLink to={"/login"}>Уже есть аккаунт? Войти</NavLink>
             </div>
         </form>
     </div>

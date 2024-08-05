@@ -31,14 +31,14 @@ const Login = (props) => {
     return(
         <div className={s.lForm}>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-            <h1 className={s.formTitle}>Sign In</h1>
+            <h1 className={s.formTitle}>Вход</h1>
             <div>
                 {errors?.username && <p style={{color: "red"}}>Поле обязательно к заполнению</p> }
             </div>
             <div className={s.formDiv}>
                 <input style={props.dark ? {color: 'white'} : null} type="text" className={s.formInput}
                 {...register("username", {required: true})}/>
-                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Username</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Логин</label>
             </div>
             <div>
                 {errors?.password && <p style={{color: "red"}}>Поле обязательно к заполнению</p>}
@@ -46,7 +46,7 @@ const Login = (props) => {
             <div className={s.formDiv + ' ' + s.formDivPas}>
                 <input style={props.dark ? {color: 'white'} : null} type="password" className={s.formInput} 
                 {...register("password", {required: true})}/>
-                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Password</label>
+                <label style={props.dark ? {backgroundColor: '#191919'} : null} className={s.formLabel}>Пароль</label>
             </div>
             {props.captcha
             ?
@@ -57,7 +57,7 @@ const Login = (props) => {
                 <div className={s.formDiv}>
                     <input type="text" className={s.formInput}
                     {...register("captcha", {required: true})}/>
-                    <label className={s.formLabel}>Captcha</label>
+                    <label className={s.formLabel}>Капча</label>
                 </div>
                 <div className={s.captchaImg}><img src={props.captcha}/></div> 
             </div>
@@ -66,9 +66,9 @@ const Login = (props) => {
             <div>
                 {props.errorMessage ? <p style={{color: "red"}}>{props.errorMessage}</p>: null}
             </div>
-            <button className={s.formButton}>Sign In</button>
+            <button className={s.formButton}>Войти</button>
             <div class={s.signUpLink}>
-                <NavLink to={"/registration"}>Don't have an account? Sign Up</NavLink>
+                <NavLink to={"/registration"}>Еще нет аккаунта? Регистрация</NavLink>
             </div>
         </form>
         </div>  
