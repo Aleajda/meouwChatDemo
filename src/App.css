@@ -20,7 +20,8 @@
     
     .app-wrapper-content {
         grid-area: c;
-    
+        max-height: calc(100vh - 65px - 5px);
+        overflow: auto;
         padding: 20px;
     }
     

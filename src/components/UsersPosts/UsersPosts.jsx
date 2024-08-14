@@ -26,21 +26,23 @@ const UsersPosts = (props) =>{
     }, [skip, query]);
     
     const [isBottom, setIsBottom] = useState(false);
-
     useEffect(() => {
+
+        const thisBlock = document.getElementsByClassName("app-wrapper-content")[0];
+    
         function handleScroll() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight*0.95) {
             debugger
-            setIsBottom(true);
-        } else {
-            setIsBottom(false);
+            if (thisBlock.scrollHeight - thisBlock.scrollTop <= thisBlock.clientHeight * 1.05) {
+                setIsBottom(true);
+            } else {
+                setIsBottom(false);
+            }
         }
-        }
-
-        window.addEventListener('scroll', handleScroll);
-
+    
+        thisBlock.addEventListener('scroll', handleScroll);
+    
         return () => {
-        window.removeEventListener('scroll', handleScroll);
+            thisBlock.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
